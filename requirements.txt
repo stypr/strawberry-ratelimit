@@ -1,0 +1,2 @@
+strawberry-graphql[debug-server]
+uvicorn[standard]
