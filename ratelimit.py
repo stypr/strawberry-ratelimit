@@ -5,7 +5,7 @@
 """
 ratelimit.py
 
-Strawberry GraphQL ratelimit extension.
+Strawberry GraphQL ratelimit extension
 """
 
 import re
@@ -308,7 +308,7 @@ class ExtensionRatelimit(Extension):
 
         # Limiting call count.
         if len(func_list) > self.call_max and self.call_max != 0:
-            error_message = f"Ratelimited: Call limited to `{self.call_max}`."
+            error_message = f"Ratelimit: Call limited to `{self.call_max}`."
             self.execution_context.result = GraphQLExecutionResult(
                 data=None,
                 errors=[GraphQLError(error_message)],
@@ -332,7 +332,7 @@ class ExtensionRatelimit(Extension):
 
                 if rate_log[0] + self.rate_seconds >= time.time():
                     remaining_time = int(self.rate_seconds-(time.time()-rate_log[0]))
-                    error_message = f"Ratelimited: `{func_name}`. Try again after {remaining_time}s"
+                    error_message = f"Ratelimit: `{func_name}`. Try again after {remaining_time}s"
                     self.execution_context.result = GraphQLExecutionResult(
                         data=None,
                         errors=[GraphQLError(error_message)],
