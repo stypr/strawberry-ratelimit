@@ -13,9 +13,9 @@ my_schema = strawberry.Schema(
     query=Query,
     mutation=Mutation,
     extensions=[
-        # 100 req / 1min
+        # 60req/min
         ExtensionRatelimit(
-            type_name=['getMusicByLevel'],
+            type_name=['getUser', 'updateUser', 'user_friends'], # queries, mutations, internal funcs.
             rate_max=60,
             rate_seconds=60,
             depth_max=50, # Maximum depth of the query
